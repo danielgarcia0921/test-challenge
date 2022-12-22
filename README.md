@@ -11,4 +11,4 @@ Repo for test challenges
 
 BEFORE RUNNING TESTS:
 
-Go to the AssertStrings folder and fill the username and password strings in with your credentials :)
+Go to the AssertStrings file and fill the username and password strings in with your credentials :)
