@@ -35,26 +35,4 @@ public class NewPostPage {
         PageFactory.initElements(driver, this);
     }
 
-    // Method to navigate to New Post page
-    public void NavigateToNewPost (){
-        navBarLink.click();
-    }
-    // Method to fill the Title text
-    public void FillTitle () {
-        titleTextBox.sendKeys("Test");
-    }
-    // Method to fill the subtitle text
-    public void FillSubtitle () {
-        subtitleTextBox.sendKeys("Test Subtitle");
-    }
-    // Method to fill the body text
-    public void FillBody () {
-        bodyTextBox.sendKeys("This is a test description :)");
-    }
-    // Method to click on the Create button
-    public void ClickCreate () {
-        createButton.click();
-    }
-
-
 }

@@ -31,20 +31,4 @@ public class EditPostPage {
         PageFactory.initElements(driver, this);
     }
 
-    // Method to fill the Title text
-    public void FillTitle () {
-        titleTextBox.sendKeys("Edited Post");
-    }
-    // Method to fill the subtitle text
-    public void FillSubtitle () {
-        subtitleTextBox.sendKeys("This is an edited post");
-    }
-    // Method to fill the body text
-    public void FillBody () {
-        bodyTextBox.sendKeys("Teehee haha");
-    }
-    // Method to click on the Create button
-    public void ClickEdit () {
-        editButton.click();
-    }
 }

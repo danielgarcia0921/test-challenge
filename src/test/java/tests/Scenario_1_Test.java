@@ -62,11 +62,11 @@ public class Scenario_1_Test {
         String formattedDate = dtf.format(now);
         formattedDate = formattedDate.replace("AM","a.m.").replace("PM","p.m.");
 
-        newPostPage.NavigateToNewPost();
-        newPostPage.FillTitle();
-        newPostPage.FillSubtitle();
-        newPostPage.FillBody();
-        newPostPage.ClickCreate();
+        newPostPage.getNavBarLink().click();
+        newPostPage.getTitleTextBox().sendKeys("Test");
+        newPostPage.getSubtitleTextBox().sendKeys("Test Subtitle");
+        newPostPage.getBodyTextBox().sendKeys("This is a test description :)");
+        newPostPage.getCreateButton().click();
 
         Assert.assertTrue("",driver.getCurrentUrl().contains(AssertStrings.POSTSPAGEURL));
 
@@ -84,13 +84,15 @@ public class Scenario_1_Test {
         newPostPage = new NewPostPage(driver);
         postPage = new PostsPage(driver);
 
-        newPostPage.NavigateToNewPost();
-        newPostPage.FillSubtitle();
-        newPostPage.FillBody();
-        newPostPage.ClickCreate();
+        newPostPage.getNavBarLink().click();
+        newPostPage.getTitleTextBox().sendKeys("Test");
+        newPostPage.getSubtitleTextBox().sendKeys("Test Subtitle");
+        newPostPage.getBodyTextBox().sendKeys("This is a test description :)");
+        newPostPage.getCreateButton().click();
 
         String errorMessage = newPostPage.getTitleTextBox().getAttribute("tagName");
         System.out.println(errorMessage);
+        // TODO
         // The Error messages are not part of the DOM, they're an attribute
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -106,21 +108,21 @@ public class Scenario_1_Test {
         editPostPage = new EditPostPage(driver);
 
          //Preconditions
-        newPostPage.NavigateToNewPost();
-        newPostPage.FillTitle();
-        newPostPage.FillSubtitle();
-        newPostPage.FillBody();
-        newPostPage.ClickCreate();
+        newPostPage.getNavBarLink().click();
+        newPostPage.getTitleTextBox().sendKeys("Test");
+        newPostPage.getSubtitleTextBox().sendKeys("Test Subtitle");
+        newPostPage.getBodyTextBox().sendKeys("This is a test description :)");
+        newPostPage.getCreateButton().click();
 
         //Test
         postPage.getEditButton().click();
         editPostPage.getTitleTextBox().clear();
         editPostPage.getSubtitleTextBox().clear();
         editPostPage.getBodyTextBox().clear();
-        editPostPage.FillTitle();
-        editPostPage.FillSubtitle();
-        editPostPage.FillBody();
-        editPostPage.ClickEdit();
+        editPostPage.getTitleTextBox().sendKeys("Edited Post");
+        editPostPage.getSubtitleTextBox().sendKeys("This is an edited post");
+        editPostPage.getBodyTextBox().sendKeys("Teehee haha");
+        editPostPage.getEditButton().click();
 
         Assert.assertTrue("",driver.getCurrentUrl().contains(AssertStrings.POSTSPAGEURL));
         Assert.assertEquals(AssertStrings.EDITPOSTTITLE, postPage.getPostTitle().getText());
@@ -137,19 +139,19 @@ public class Scenario_1_Test {
         editPostPage = new EditPostPage(driver);
 
         //Preconditions
-        newPostPage.NavigateToNewPost();
-        newPostPage.FillTitle();
-        newPostPage.FillSubtitle();
-        newPostPage.FillBody();
-        newPostPage.ClickCreate();
+        newPostPage.getNavBarLink().click();
+        newPostPage.getTitleTextBox().sendKeys("Test");
+        newPostPage.getSubtitleTextBox().sendKeys("Test Subtitle");
+        newPostPage.getBodyTextBox().sendKeys("This is a test description :)");
+        newPostPage.getCreateButton().click();
 
         //Test
         postPage.getEditButton().click();
         editPostPage.getSubtitleTextBox().clear();
         editPostPage.getBodyTextBox().clear();
-        editPostPage.FillSubtitle();
-        editPostPage.FillBody();
-        editPostPage.ClickEdit();
+        editPostPage.getSubtitleTextBox().sendKeys("This is an edited post");
+        editPostPage.getBodyTextBox().sendKeys("Teehee haha");
+        editPostPage.getEditButton().click();
 
         Assert.assertTrue("",driver.getCurrentUrl().contains(AssertStrings.POSTSPAGEURL));
         Assert.assertEquals(AssertStrings.NEWPOSTTITLE, postPage.getPostTitle().getText());
