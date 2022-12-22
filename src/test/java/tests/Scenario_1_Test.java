@@ -129,4 +129,32 @@ public class Scenario_1_Test {
         Assert.assertTrue(postPage.getPostDetails().getText().contains(AssertStrings.username));
 
     }
+
+    @Test
+    public void verifyFeature2Scenario2 () {
+        newPostPage = new NewPostPage(driver);
+        postPage = new PostsPage(driver);
+        editPostPage = new EditPostPage(driver);
+
+        //Preconditions
+        newPostPage.NavigateToNewPost();
+        newPostPage.FillTitle();
+        newPostPage.FillSubtitle();
+        newPostPage.FillBody();
+        newPostPage.ClickCreate();
+
+        //Test
+        postPage.getEditButton().click();
+        editPostPage.getSubtitleTextBox().clear();
+        editPostPage.getBodyTextBox().clear();
+        editPostPage.FillSubtitle();
+        editPostPage.FillBody();
+        editPostPage.ClickEdit();
+
+        Assert.assertTrue("",driver.getCurrentUrl().contains(AssertStrings.POSTSPAGEURL));
+        Assert.assertEquals(AssertStrings.NEWPOSTTITLE, postPage.getPostTitle().getText());
+        Assert.assertEquals(AssertStrings.EDITPOSTSUBTITLE, postPage.getPostSubtitle().getText());
+        Assert.assertEquals(AssertStrings.EDITPOSTDESCRIPTION, postPage.getPostDescription().getText());
+        Assert.assertTrue(postPage.getPostDetails().getText().contains(AssertStrings.username));
+    }
 }
