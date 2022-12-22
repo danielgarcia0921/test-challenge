@@ -22,6 +22,9 @@ public class PostsPage {
     @FindBy(css=".container small")
     private WebElement postDetails;
 
+    @FindBy(css = ".btn.btn-outline-primary")
+    private WebElement editButton;
+
     WebDriver driver;
 
     public PostsPage (WebDriver driver) {
@@ -34,14 +37,6 @@ public class PostsPage {
     public WebElement getPostSubtitle (){return postSubtitle;}
     public WebElement getPostDescription (){return postDescription;}
     public WebElement getPostDetails (){return postDetails;}
-
-
-    public boolean verifyNowOnPostsPage(String currentUrl) {
-        String ExpectedURL = AssertStrings.POSTSPAGEURL;
-        if (ExpectedURL == currentUrl)
-            return true;
-        return false;
-    }
-
+    public WebElement getEditButton (){return editButton;}
 
 }

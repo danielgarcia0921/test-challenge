@@ -6,10 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class NewPostPage {
-    @FindBy(xpath = "//a[.=\"New Post\"]")
-    private WebElement navBarLink;
-
+public class EditPostPage {
     @FindBy(id = "id_title")
     private WebElement titleTextBox;
 
@@ -20,41 +17,34 @@ public class NewPostPage {
     private WebElement bodyTextBox;
 
     @FindBy(css = ".btn.btn-success")
-    private WebElement createButton;
+    private WebElement editButton;
 
     WebDriver driver;
 
     public WebElement getTitleTextBox () {return titleTextBox;}
     public WebElement getSubtitleTextBox () {return subtitleTextBox;}
     public WebElement getBodyTextBox () {return bodyTextBox;}
-    public WebElement getCreateButton () {return createButton;}
-    public WebElement getNavBarLink () {return navBarLink;}
+    public WebElement getEditButton () {return editButton;}
 
-    public NewPostPage (WebDriver driver) {
+    public EditPostPage (WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    // Method to navigate to New Post page
-    public void NavigateToNewPost (){
-        navBarLink.click();
-    }
     // Method to fill the Title text
     public void FillTitle () {
-        titleTextBox.sendKeys("Test");
+        titleTextBox.sendKeys("Edited Post");
     }
     // Method to fill the subtitle text
     public void FillSubtitle () {
-        subtitleTextBox.sendKeys("Test Subtitle");
+        subtitleTextBox.sendKeys("This is an edited post");
     }
     // Method to fill the body text
     public void FillBody () {
-        bodyTextBox.sendKeys("This is a test description :)");
+        bodyTextBox.sendKeys("Teehee haha");
     }
     // Method to click on the Create button
-    public void ClickCreate () {
-        createButton.click();
+    public void ClickEdit () {
+        editButton.click();
     }
-
-
 }
